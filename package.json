@@ -1,0 +1,26 @@
+{
+  "name": "ddb-lab",
+  "version": "1.0.0",
+  "description": "## Tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ilyachenko/ddb-lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ilyachenko/ddb-lab/issues"
+  },
+  "homepage": "https://github.com/ilyachenko/ddb-lab#readme",
+  "type": "module",
+  "dependencies": {
+    "aws-sdk": "^2.1189.0",
+    "d3-dsv": "^3.0.1",
+    "jetty": "^0.2.1"
+  }
+}
