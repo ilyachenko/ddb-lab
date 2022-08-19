@@ -67,20 +67,11 @@ function seed() {
         tconst: {
           S: tconst,
         },
-        titleType: {
-          S: titleType,
-        },
         originalTitle: {
           S: originalTitle,
         },
         isAdult: {
-          BOOL: !isAdult,
-        },
-        Year: {
-          N: startYear,
-        },
-        endYear: {
-          N: endYear,
+          BOOL: isAdult === "0" ? false : true,
         },
         runtimeMinutes: {
           N: runtimeMinutes,
@@ -91,14 +82,6 @@ function seed() {
       },
       ReturnConsumedCapacity: "TOTAL",
     };
-
-    if (endYear === "\\N") {
-      delete params.Item.endYear;
-    }
-
-    if (runtimeMinutes === "\\N") {
-      delete params.Item.runtimeMinutes;
-    }
 
     if (genres === "\\N") {
       delete params.Item.genres;
