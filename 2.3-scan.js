@@ -52,5 +52,3 @@ getItem();
 //     ":genres": { S: "Drama" },
 //   },
 // };
-
-// 5: Delete items without rating
