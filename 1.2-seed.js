@@ -50,16 +50,9 @@ function seed() {
       return;
     }
     const strToParse = `${columns}${EOL}${line}`;
-    const {
-      tconst,
-      titleType,
-      originalTitle,
-      isAdult,
-      startYear,
-      endYear,
-      runtimeMinutes,
-      genres,
-    } = d3.tsvParse(strToParse).filter((d, i) => i !== "columns")[0];
+    const { tconst, originalTitle, isAdult, runtimeMinutes, genres } = d3
+      .tsvParse(strToParse)
+      .filter((d, i) => i !== "columns")[0];
 
     const params = {
       TableName: "Movies",
@@ -102,3 +95,6 @@ function seed() {
 }
 
 seed();
+
+// 1: Seed movies
+// 2: Seed ratings
