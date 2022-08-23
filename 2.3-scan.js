@@ -8,6 +8,10 @@ const ddb = new AWS.DynamoDB({
 async function getItem() {
   const params = {
     TableName: "Movies",
+    // FilterExpression: "runtimeMinutes > :runtimeMinutes",
+    // ExpressionAttributeValues: {
+    //   ":runtimeMinutes": { N: "0" },
+    // },
   };
 
   try {
@@ -44,7 +48,16 @@ getItem();
 // };
 
 // SLIDE: Conditions
-// 4: Filter by contains
+// 4. Runtime less than
+// const params = {
+//   TableName: "Movies",
+//   FilterExpression: "runtimeMinutes > :runtimeMinutes",
+//   ExpressionAttributeValues: {
+//     ":runtimeMinutes": { N: "0" },
+//   },
+// };
+
+// 5: Filter by contains
 // const params = {
 //   TableName: "Movies",
 //   FilterExpression: "contains(genres, :genres)",

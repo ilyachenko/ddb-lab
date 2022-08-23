@@ -17,10 +17,18 @@ const params = {
       AttributeName: "tconst",
       KeyType: "HASH",
     },
+    {
+      AttributeName: "sk",
+      KeyType: "RANGE",
+    },
   ],
   AttributeDefinitions: [
     {
       AttributeName: "tconst",
+      AttributeType: "S",
+    },
+    {
+      AttributeName: "sk",
       AttributeType: "S",
     },
   ],
@@ -40,3 +48,10 @@ ddb.createTable(params, (err, data) => {
     console.log("Table created successfully!");
   }
 });
+
+// 1. Create table
+// 2. Re-create table with sort key
+// {
+//   AttributeName: "sk",
+//   KeyType: "RANGE",
+// },

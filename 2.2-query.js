@@ -28,7 +28,11 @@ getItem();
 //     ":tconst": { S: "tt12374656" },
 //   },
 // };
-// 2: Demo error handling - Query condition missed key schema element
+
+// 2: Projection
+// ProjectionExpression: "primaryTitle, isAdult",
+
+// 3: Demo error handling - Query condition missed key schema element
 // const params = {
 //   TableName: "Movies",
 //   KeyConditionExpression: "primaryTitle = :primaryTitle",
@@ -36,5 +40,3 @@ getItem();
 //     ":primaryTitle": { S: "Into Her Own" },
 //   },
 // };
-// 3: Projection
-// ProjectionExpression: "primaryTitle, isAdult",
