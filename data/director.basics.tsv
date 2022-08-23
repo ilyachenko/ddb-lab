@@ -1,0 +1,49 @@
+tconst	nconst	primaryName	birthYear	deathYear	primaryProfession
+tt0103064	nm0000116	James Cameron	1954	\N	writer,producer,director
+tt0084787	nm0000118	John Carpenter	1948	\N	soundtrack,writer,composer
+tt0405159	nm0000142	Clint Eastwood	1930	\N	actor,producer,director
+tt0076759	nm0000184	George Lucas	1944	\N	writer,producer,director
+tt0075314	nm0000217	Martin Scorsese	1942	\N	producer,director,actor
+tt0099685	nm0000217	Martin Scorsese	1942	\N	producer,director,actor
+tt0107290	nm0000229	Steven Spielberg	1946	\N	producer,writer,director
+tt0110912	nm0000233	Quentin Tarantino	1963	\N	writer,actor,producer
+tt0266697	nm0000233	Quentin Tarantino	1963	\N	writer,actor,producer
+tt0068646	nm0000338	Francis Ford Coppola	1939	\N	producer,director,writer
+tt0086250	nm0000361	Brian De Palma	1940	\N	director,writer,producer
+tt0114369	nm0000399	David Fincher	1962	\N	producer,director,actor
+tt0137523	nm0000399	David Fincher	1962	\N	producer,director,actor
+tt0211915	nm0000466	Jean-Pierre Jeunet	1953	\N	director,writer,producer
+tt0078748	nm0000631	Ridley Scott	1937	\N	producer,director,production_designer
+tt0093870	nm0000682	Paul Verhoeven	1938	\N	director,producer,writer
+tt0075148	nm0000814	John G. Avildsen	1935	2017	director,editor,cinematographer
+tt0116282	nm0001053	Ethan Coen	1957	\N	producer,writer,director
+tt0477348	nm0001053	Ethan Coen	1957	\N	producer,writer,director
+tt0116282	nm0001054	Joel Coen	1954	\N	producer,writer,director
+tt0477348	nm0001054	Joel Coen	1954	\N	producer,writer,director
+tt0111161	nm0001104	Frank Darabont	1959	\N	writer,producer,director
+tt0120689	nm0001104	Frank Darabont	1959	\N	writer,producer,director
+tt0167260	nm0001392	Peter Jackson	1961	\N	producer,director,writer
+tt0095016	nm0001532	John McTiernan	1951	\N	director,producer,writer
+tt0120382	nm0001837	Peter Weir	1944	\N	director,writer,producer
+tt0114709	nm0005124	John Lasseter	1957	\N	producer,writer,director
+tt0169547	nm0005222	Sam Mendes	1965	\N	producer,director,miscellaneous
+tt0208092	nm0005363	Guy Ritchie	1968	\N	writer,director,producer
+tt0110357	nm0021249	Roger Allers	1949	\N	art_department,writer,director
+tt0110357	nm0591450	Rob Minkoff	1962	\N	producer,director,animation_department
+tt6966692	nm0268380	Peter Farrelly	1956	\N	producer,writer,director
+tt0086190	nm0549658	Richard Marquand	1937	1987	director,producer,writer
+tt0434409	nm0574625	James McTeigue	\N	\N	director,assistant_director,producer
+tt1675434	nm0619923	Olivier Nakache	1973	\N	producer,director,writer
+tt1675434	nm0865918	Éric Toledano	1971	\N	writer,producer,director
+tt0372784	nm0634240	Christopher Nolan	1970	\N	writer,producer,director
+tt0468569	nm0634240	Christopher Nolan	1970	\N	writer,producer,director
+tt0816692	nm0634240	Christopher Nolan	1970	\N	writer,producer,director
+tt1375666	nm0634240	Christopher Nolan	1970	\N	writer,producer,director
+tt7286456	nm0680846	Todd Phillips	1970	\N	producer,writer,director
+tt4633694	nm0709056	Peter Ramsey	1962	\N	art_department,director,producer
+tt4633694	nm0745247	Rodney Rothman	\N	\N	writer,producer,director
+tt4633694	nm2130108	Bob Persichetti	\N	\N	animation_department,art_department,director
+tt4154756	nm0751577	Anthony Russo	1970	\N	producer,director,writer
+tt4154756	nm0751648	Joe Russo	1971	\N	producer,director,writer
+tt0133093	nm0905152	Lilly Wachowski	1967	\N	writer,producer,director
+tt0133093	nm0905154	Lana Wachowski	1965	\N	writer,producer,director
