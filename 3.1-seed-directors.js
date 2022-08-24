@@ -21,8 +21,6 @@ import * as d3 from "d3-dsv";
 import currDir from "./helpers/currDir.js";
 import log from "./helpers/log.js";
 
-const print = jetty();
-
 const ddb = new AWS.DynamoDB({
   endpoint: "http://localhost:8000",
   region: "local",
