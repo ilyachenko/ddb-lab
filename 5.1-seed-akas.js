@@ -4,27 +4,11 @@ import fs from "fs";
 import path from "path";
 import readline from "readline";
 
-// AWS SDK
-import AWS from "aws-sdk";
-
 // TSV parser
 import * as d3 from "d3-dsv";
 
 // Helpers
-import currDir from "./helpers/currDir.js";
-import jetty from "./helpers/jetty.js";
-
-const print = jetty();
-
-const ddb = new AWS.DynamoDB({
-  endpoint: "http://localhost:8000",
-  region: "local",
-});
-
-function updateStatus(counter, seedCounter) {
-  const queue = counter - seedCounter > -1 ? counter - seedCounter - 1 : 0;
-  print(`Queue: ${queue}\nAdded: ${seedCounter++}`);
-}
+import { ddb, currDir, log } from "./helpers/index.js";
 
 function seed() {
   const filePath = path.join(currDir(import.meta.url) + "/data/title.akas.tsv");
@@ -85,11 +69,11 @@ function seed() {
     }
 
     try {
-      updateStatus(counter, seedCounter);
+      log(counter, seedCounter);
       await ddb
         .putItem(params)
         .promise()
-        .then(() => updateStatus(counter, ++seedCounter));
+        .then(() => log(counter, ++seedCounter));
     } catch (error) {
       console.log(error);
       console.log(params);
