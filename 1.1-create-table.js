@@ -1,9 +1,4 @@
-import AWS from "aws-sdk";
-
-const ddb = new AWS.DynamoDB({
-  endpoint: "http://localhost:8000",
-  region: "local",
-});
+import { ddb } from "./helpers/index.js";
 
 const params = {
   TableName: "Movies",

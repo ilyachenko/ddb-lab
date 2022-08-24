@@ -1,30 +1,14 @@
-/*
-Description:
-    - Reads the file and gets the data from the file.
-    - Writes the data to the file.
-    - Seeds the table.
-*/
-
 // System libs
 import { EOL } from "os";
 import fs from "fs";
 import path from "path";
 import readline from "readline";
 
-// AWS SDK
-import AWS from "aws-sdk";
-
 // TSV parser
 import * as d3 from "d3-dsv";
 
 // Helpers
-import currDir from "./helpers/currDir.js";
-import log from "./helpers/log.js";
-
-const ddb = new AWS.DynamoDB({
-  endpoint: "http://localhost:8000",
-  region: "local",
-});
+import { ddb, currDir, log } from "./helpers/index.js";
 
 function seed() {
   const filePath = path.join(
