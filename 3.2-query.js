@@ -3,12 +3,6 @@ import { ddb } from "./helpers/index.js";
 async function getItem() {
   const params = {
     TableName: "Movies",
-    KeyConditionExpression: "tconst = :tconst AND begins_with(sk, :sk)",
-    ExpressionAttributeValues: {
-      ":tconst": { S: "tt4633694" },
-      ":sk": { S: "#DIRECTOR#" },
-    },
-    ProjectionExpression: "primaryName",
   };
 
   try {
@@ -20,3 +14,13 @@ async function getItem() {
 }
 
 getItem();
+
+////////////////////////////////////////////////////////////////////////////////
+// 1. Get directors by movie id
+// KeyConditionExpression: "tconst = :tconst AND begins_with(sk, :sk)",
+// ExpressionAttributeValues: {
+//   ":tconst": { S: "tt4633694" },
+//   ":sk": { S: "#DIRECTOR#" },
+// },
+// ProjectionExpression: "primaryName",
+////////////////////////////////////////////////////////////////////////////////
