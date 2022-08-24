@@ -20,6 +20,7 @@ async function getItem() {
 
 getItem();
 
+////////////////////////////////////////////////////////////////////////////////
 // 1: Get by id
 // const params = {
 //   TableName: "Movies",
@@ -28,11 +29,11 @@ getItem();
 //     ":tconst": { S: "tt12374656" },
 //   },
 // };
-
+////////////////////////////////////////////////////////////////////////////////
 // 2: Projection
 // ProjectionExpression: "primaryTitle, isAdult",
-
-// 3: Demo error handling - Query condition missed key schema element
+////////////////////////////////////////////////////////////////////////////////
+// 3: Error handling - Query condition missed key schema element
 // const params = {
 //   TableName: "Movies",
 //   KeyConditionExpression: "primaryTitle = :primaryTitle",
@@ -40,3 +41,4 @@ getItem();
 //     ":primaryTitle": { S: "Into Her Own" },
 //   },
 // };
+////////////////////////////////////////////////////////////////////////////////

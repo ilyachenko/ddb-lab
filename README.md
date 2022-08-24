@@ -15,13 +15,3 @@
 - Remove table:
 
     `aws dynamodb delete-table --table-name Movies --endpoint-url http://localhost:8000`
-
-## Plan of workshop
-
-1. Create table
-2. Seed movies
-3. Get item
-4. Query item
-5. Scan
-6. Seed rating
-7. Seed akas

@@ -8,10 +8,6 @@ const ddb = new AWS.DynamoDB({
 async function getItem() {
   const params = {
     TableName: "Movies",
-    // FilterExpression: "runtimeMinutes > :runtimeMinutes",
-    // ExpressionAttributeValues: {
-    //   ":runtimeMinutes": { N: "0" },
-    // },
   };
 
   try {
@@ -24,11 +20,12 @@ async function getItem() {
 
 getItem();
 
+////////////////////////////////////////////////////////////////////////////////
 // 1: Get count of items in table
 // const params = {
 //   TableName: "Movies",
 // };
-
+////////////////////////////////////////////////////////////////////////////////
 // 2: Get item by hash key
 // const params = {
 //   TableName: "Movies",
@@ -37,7 +34,7 @@ getItem();
 //     ":tconst": { S: "tt12374656" },
 //   },
 // };
-
+////////////////////////////////////////////////////////////////////////////////
 // 3: Filter items by attribute value
 // const params = {
 //   TableName: "Movies",
@@ -46,8 +43,8 @@ getItem();
 //     ":isAdult": { BOOL: true },
 //   },
 // };
-
-// SLIDE: Conditions
+////////////////////////////////////////////////////////////////////////////////
+// !!! SLIDE: Conditions !!!
 // 4. Runtime less than
 // const params = {
 //   TableName: "Movies",
@@ -56,7 +53,7 @@ getItem();
 //     ":runtimeMinutes": { N: "0" },
 //   },
 // };
-
+////////////////////////////////////////////////////////////////////////////////
 // 5: Filter by contains
 // const params = {
 //   TableName: "Movies",
@@ -65,3 +62,4 @@ getItem();
 //     ":genres": { S: "Drama" },
 //   },
 // };
+////////////////////////////////////////////////////////////////////////////////

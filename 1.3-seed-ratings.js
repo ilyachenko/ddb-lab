@@ -1,10 +1,3 @@
-/*
-Description:
-    - Reads the file and gets the data from the file.
-    - Writes the data to the file.
-    - Seeds the table.
-*/
-
 // System libs
 import { EOL } from "os";
 import fs from "fs";
@@ -19,19 +12,12 @@ import * as d3 from "d3-dsv";
 
 // Helpers
 import currDir from "./helpers/currDir.js";
-import jetty from "./helpers/jetty.js";
-
-const print = jetty();
+import log from "./helpers/log.js";
 
 const ddb = new AWS.DynamoDB({
   endpoint: "http://localhost:8000",
   region: "local",
 });
-
-function updateStatus(counter, seedCounter) {
-  const queue = counter - seedCounter > -1 ? counter - seedCounter - 1 : 0;
-  print(`Queue: ${queue}\nAdded: ${seedCounter++}`);
-}
 
 function seedRatings() {
   const filePath = path.join(
@@ -56,34 +42,14 @@ function seedRatings() {
       .tsvParse(strToParse)
       .filter((d, i) => i !== "columns")[0];
 
-    const params = {
-      TableName: "Movies",
-      Key: {
-        tconst: {
-          S: tconst,
-        },
-        sk: {
-          S: "#MOVIE",
-        },
-      },
-      UpdateExpression:
-        "set averageRating = :averageRating, numVotes = :numVotes",
-      ExpressionAttributeValues: {
-        ":averageRating": {
-          N: averageRating,
-        },
-        ":numVotes": {
-          N: numVotes,
-        },
-      },
-    };
+    const params = {};
 
     try {
-      updateStatus(counter, seedCounter);
+      log(counter, seedCounter);
       await ddb
         .updateItem(params)
         .promise()
-        .then(() => updateStatus(counter, ++seedCounter));
+        .then(() => log(counter, ++seedCounter));
     } catch (error) {
       console.log(error);
       console.log(params);
@@ -93,3 +59,30 @@ function seedRatings() {
 }
 
 seedRatings();
+
+////////////////////////////////////////////////////////////////////////////////
+// 1. Seed ratings
+// {
+//   TableName: "Movies",
+//   Key: {
+//     tconst: {
+//       S: tconst,
+//     },
+//   },
+//   UpdateExpression:
+//     "set averageRating = :averageRating, numVotes = :numVotes",
+//   ExpressionAttributeValues: {
+//     ":averageRating": {
+//       N: averageRating,
+//     },
+//     ":numVotes": {
+//       N: numVotes,
+//     },
+//   },
+// };
+////////////////////////////////////////////////////////////////////////////////
+// 2. Add sk to ratings
+// sk: {
+//   S: "#MOVIE#",
+// },
+////////////////////////////////////////////////////////////////////////////////

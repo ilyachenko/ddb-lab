@@ -7,26 +7,6 @@ const ddb = new AWS.DynamoDB({
 
 const params = {
   TableName: "Movies",
-  KeySchema: [
-    {
-      AttributeName: "tconst",
-      KeyType: "HASH",
-    },
-    {
-      AttributeName: "sk",
-      KeyType: "RANGE",
-    },
-  ],
-  AttributeDefinitions: [
-    {
-      AttributeName: "tconst",
-      AttributeType: "S",
-    },
-    {
-      AttributeName: "sk",
-      AttributeType: "S",
-    },
-  ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 1,
     WriteCapacityUnits: 1,
@@ -44,9 +24,24 @@ ddb.createTable(params, (err, data) => {
   }
 });
 
+////////////////////////////////////////////////////////////////////////////////
 // 1. Create table
+// KeySchema: [
+//   {
+//     AttributeName: "tconst",
+//     KeyType: "HASH",
+//   },
+// ],
+// AttributeDefinitions: [
+//   {
+//     AttributeName: "tconst",
+//     AttributeType: "S",
+//   },
+// ]
+////////////////////////////////////////////////////////////////////////////////
 // 2. Re-create table with sort key
 // {
 //   AttributeName: "sk",
 //   KeyType: "RANGE",
-// },
+// }
+////////////////////////////////////////////////////////////////////////////////
