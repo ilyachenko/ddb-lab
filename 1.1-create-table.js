@@ -1,8 +1,3 @@
-/* 
-Description:
-  - Creates a table in DynamoDB.
-*/
-
 import AWS from "aws-sdk";
 
 const ddb = new AWS.DynamoDB({
