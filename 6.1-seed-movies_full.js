@@ -21,16 +21,19 @@ const ddb = new AWS.DynamoDB({
   region: "local",
 });
 
-function updateStatus(counter, seedCounter) {
+function updateStatus(counter, seedCounter, before) {
   const queue = counter - seedCounter > -1 ? counter - seedCounter - 1 : 0;
-  print(`Queue: ${queue}\nAdded: ${seedCounter++}`);
+  print(
+    `Queue: ${queue}\nAdded: ${seedCounter++}\nSeconds: ${
+      (Date.now() - before) / 1000
+    }`
+  );
 }
 
 function seed() {
-  const filePath = path.join(
-    currDir(import.meta.url) + "/data/title.basics.tsv"
-  );
+  const filePath = path.join(currDir(import.meta.url) + "/data/title.full.tsv");
 
+  const before = Date.now();
   let counter = 0;
   let seedCounter = 0;
   let columns;
@@ -50,7 +53,7 @@ function seed() {
       .filter((d, i) => i !== "columns")[0];
 
     const params = {
-      TableName: "Movies",
+      TableName: "MoviesFull",
       Item: {
         tconst: {
           S: tconst,
@@ -78,12 +81,16 @@ function seed() {
       delete params.Item.genres;
     }
 
+    if (runtimeMinutes === "\\N") {
+      delete params.Item.runtimeMinutes;
+    }
+
     try {
-      updateStatus(counter, seedCounter);
+      updateStatus(counter, seedCounter, before);
       await ddb
         .putItem(params)
         .promise()
-        .then(() => updateStatus(counter, ++seedCounter));
+        .then(() => updateStatus(counter, ++seedCounter, before));
     } catch (error) {
       console.log(error);
       console.log(params);
