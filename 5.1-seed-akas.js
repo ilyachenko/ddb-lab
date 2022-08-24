@@ -39,13 +39,13 @@ function seed() {
       TableName: "Movies",
       Item: {
         tconst: {
-          S: `#AKAS#${titleId}`,
+          S: titleId,
         },
         type: {
           S: "akas",
         },
         sk: {
-          S: ordering,
+          S: `#AKAS#${titleId}#${ordering}`,
         },
         title: {
           S: title,

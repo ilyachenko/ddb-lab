@@ -1,27 +1,14 @@
-import AWS from "aws-sdk";
-
-const ddb = new AWS.DynamoDB({
-  endpoint: "http://localhost:8000",
-  region: "local",
-});
+import { ddb } from "./helpers/index.js";
 
 async function getItem() {
   const params = {
     TableName: "Movies",
     IndexName: "TypesRegionIndex",
-    KeyConditionExpression: "#type = :type AND #region = :region",
-    // FilterExpression: "#language = :language",
+    KeyConditionExpression: "type = :type AND region = :region",
     ExpressionAttributeValues: {
       ":type": { S: "akas" },
-      ":region": { S: "UA" },
-      // ":language": { S: "de" },
+      ":region": { S: "DE" },
     },
-    ExpressionAttributeNames: {
-      "#type": "type",
-      "#region": "region",
-      "#language": "language",
-    },
-    ProjectionExpression: "title, #language, #region",
   };
 
   try {
@@ -34,5 +21,15 @@ async function getItem() {
 
 getItem();
 
-// TODO mention about FilterExpression
-// ProjectionExpression: "#region ,#language",
+////////////////////////////////////////////////////////////////////////////////
+// 1. Reserved word error
+// ExpressionAttributeNames: {
+//   "#type": "type",
+//   "#region": "region",
+//   "#language": "language",
+// },
+// ProjectionExpression: "title, #region, #language",
+// 2. DE region and de language
+// FilterExpression: "#language = :language"
+// ":language": { S: "de" }
+////////////////////////////////////////////////////////////////////////////////

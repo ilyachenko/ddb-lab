@@ -4,31 +4,11 @@ import fs from "fs";
 import path from "path";
 import readline from "readline";
 
-// AWS SDK
-import AWS from "aws-sdk";
-
 // TSV parser
 import * as d3 from "d3-dsv";
 
 // Helpers
-import currDir from "./helpers/currDir.js";
-import jetty from "./helpers/jetty.js";
-
-const print = jetty();
-
-const ddb = new AWS.DynamoDB({
-  endpoint: "http://localhost:8000",
-  region: "local",
-});
-
-function updateStatus(counter, seedCounter, before) {
-  const queue = counter - seedCounter > -1 ? counter - seedCounter - 1 : 0;
-  print(
-    `Queue: ${queue}\nAdded: ${seedCounter++}\nSeconds: ${
-      (Date.now() - before) / 1000
-    }`
-  );
-}
+import { ddb, currDir, logWithTimer } from "./helpers/index.js";
 
 function seed() {
   const filePath = path.join(currDir(import.meta.url) + "/data/title.full.tsv");
@@ -86,11 +66,11 @@ function seed() {
     }
 
     try {
-      updateStatus(counter, seedCounter, before);
+      logWithTimer(counter, seedCounter, before);
       await ddb
         .putItem(params)
         .promise()
-        .then(() => updateStatus(counter, ++seedCounter, before));
+        .then(() => logWithTimer(counter, ++seedCounter, before));
     } catch (error) {
       console.log(error);
       console.log(params);
