@@ -1,14 +1,12 @@
 // System libs
-import { EOL } from "os";
 import fs from "fs";
 import path from "path";
 import readline from "readline";
 
-// TSV parser
-import * as d3 from "d3-dsv";
-
 // Helpers
-import { ddb, currDir, log } from "./helpers/index.js";
+import { ddb, currDir, log, LineParser } from "./helpers/index.js";
+
+const lineParser = new LineParser();
 
 function seedRatings() {
   const filePath = path.join(
@@ -17,7 +15,6 @@ function seedRatings() {
 
   let counter = 0;
   let seedCounter = 0;
-  let columns;
 
   var lineReader = readline.createInterface({
     input: fs.createReadStream(filePath),
@@ -25,13 +22,11 @@ function seedRatings() {
 
   lineReader.on("line", async (line) => {
     if (counter++ === 0) {
-      columns = line;
+      lineParser.setColumn(line);
       return;
     }
-    const strToParse = `${columns}${EOL}${line}`;
-    const { tconst, averageRating, numVotes } = d3
-      .tsvParse(strToParse)
-      .filter((d, i) => i !== "columns")[0];
+
+    const { tconst, averageRating, numVotes } = lineParser.parse(line);
 
     const params = {};
 
