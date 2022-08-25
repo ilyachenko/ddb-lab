@@ -20,16 +20,3 @@ async function getItem() {
 }
 
 getItem();
-
-////////////////////////////////////////////////////////////////////////////////
-// 1. Reserved word error
-// ExpressionAttributeNames: {
-//   "#type": "type",
-//   "#region": "region",
-//   "#language": "language",
-// },
-// ProjectionExpression: "title, #region, #language",
-// 2. DE region and de language
-// FilterExpression: "#language = :language"
-// ":language": { S: "de" }
-////////////////////////////////////////////////////////////////////////////////

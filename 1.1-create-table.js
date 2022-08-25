@@ -18,25 +18,3 @@ ddb.createTable(params, (err, data) => {
     console.log("Table created successfully!");
   }
 });
-
-////////////////////////////////////////////////////////////////////////////////
-// 1. Create table
-// KeySchema: [
-//   {
-//     AttributeName: "tconst",
-//     KeyType: "HASH",
-//   },
-// ],
-// AttributeDefinitions: [
-//   {
-//     AttributeName: "tconst",
-//     AttributeType: "S",
-//   },
-// ]
-////////////////////////////////////////////////////////////////////////////////
-// 2. Re-create table with sort key
-// {
-//   AttributeName: "sk",
-//   KeyType: "RANGE",
-// }
-////////////////////////////////////////////////////////////////////////////////

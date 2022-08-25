@@ -45,30 +45,3 @@ function seedRatings() {
 }
 
 seedRatings();
-
-////////////////////////////////////////////////////////////////////////////////
-// 1. Seed ratings
-// {
-//   TableName: "Movies",
-//   Key: {
-//     tconst: {
-//       S: tconst,
-//     },
-//   },
-//   UpdateExpression:
-//     "set averageRating = :averageRating, numVotes = :numVotes",
-//   ExpressionAttributeValues: {
-//     ":averageRating": {
-//       N: averageRating,
-//     },
-//     ":numVotes": {
-//       N: numVotes,
-//     },
-//   },
-// };
-////////////////////////////////////////////////////////////////////////////////
-// 2. Add sk to ratings
-// sk: {
-//   S: "#MOVIE#",
-// },
-////////////////////////////////////////////////////////////////////////////////

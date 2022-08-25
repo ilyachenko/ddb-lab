@@ -49,34 +49,3 @@ function seed() {
 }
 
 seed();
-
-////////////////////////////////////////////////////////////////////////////////
-// 1. Seed the Movies table with the data from the title.basics.tsv file.
-// Item: {
-//   tconst: {
-//     S: tconst,
-//   },
-//   originalTitle: {
-//     S: originalTitle,
-//   },
-//   startYear: {
-//     N: startYear,
-//   },
-//   runtimeMinutes: {
-//     N: runtimeMinutes,
-//   },
-//   genres: {
-//     SS: genres.split(","),
-//   },
-// },
-//
-// Remove 'N' symbol
-// if (genres === "\\N") {
-//   delete params.Item.genres;
-// }
-////////////////////////////////////////////////////////////////////////////////
-// 2. Add a new column to the Movies table called "sk".
-// sk: {
-//   S: "#MOVIE#",
-// },
-////////////////////////////////////////////////////////////////////////////////

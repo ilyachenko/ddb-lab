@@ -56,33 +56,3 @@ function seed() {
 }
 
 seed();
-
-////////////////////////////////////////////////////////////////////////////////
-// 1. Seed directors data
-// tconst: {
-//   S: tconst,
-// },
-// sk: {
-//   S: `#DIRECTOR#${nconst}`,
-// },
-// primaryName: {
-//   S: primaryName,
-// },
-// birthYear: {
-//   N: birthYear,
-// },
-// deathYear: {
-//   N: deathYear,
-// },
-// primaryProfession: {
-//   SS: primaryProfession.split(","),
-// },
-//
-// if (birthYear === "\\N") {
-//   delete params.Item.birthYear;
-// }
-//
-// if (deathYear === "\\N") {
-//   delete params.Item.deathYear;
-// }
-////////////////////////////////////////////////////////////////////////////////
