@@ -1,30 +1,13 @@
-// System libs
-import fs from "fs";
-import path from "path";
-import readline from "readline";
-
-// AWS SDK
-import AWS from "aws-sdk";
-
-// Helpers
-import { ddb, currDir, logWithTimer, LineParser } from "./helpers/index.js";
+import { ddb, logWithTimer, LineParser, LineReader } from "./helpers/index.js";
 
 const lineParser = new LineParser();
 
 const BATCH_SIZE = 25;
 
 async function seed() {
-  const filePath = path.join(currDir(import.meta.url) + "/data/title.full.tsv");
-
   const before = Date.now();
   let counter = 0;
   let seedCounter = 0;
-  let columns;
-  let chunkCounter = 0;
-
-  var lineReader = readline.createInterface({
-    input: fs.createReadStream(filePath),
-  });
 
   const params = {
     RequestItems: {
@@ -32,7 +15,7 @@ async function seed() {
     },
   };
 
-  lineReader.on("line", async (line) => {
+  LineReader("title.full", async (line) => {
     if (counter++ === 0) {
       lineParser.setColumn(line);
       return;
@@ -46,7 +29,7 @@ async function seed() {
         S: tconst,
       },
       sk: {
-        S: "#MOVIE#",
+        S: "MOVIE#",
       },
       originalTitle: {
         S: originalTitle,

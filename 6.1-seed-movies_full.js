@@ -1,26 +1,14 @@
-// System libs
-import fs from "fs";
-import path from "path";
-import readline from "readline";
-
-// Helpers
-import { ddb, currDir, logWithTimer, LineParser } from "./helpers/index.js";
+import { ddb, logWithTimer, LineParser, LineReader } from "./helpers/index.js";
 
 const lineParser = new LineParser();
 
 function seed() {
-  const filePath = path.join(currDir(import.meta.url) + "/data/title.full.tsv");
-
   const before = Date.now();
   let counter = 0;
   let seedCounter = 0;
   let columns;
 
-  var lineReader = readline.createInterface({
-    input: fs.createReadStream(filePath),
-  });
-
-  lineReader.on("line", async (line) => {
+  LineReader("title.full", async (line) => {
     if (counter++ === 0) {
       lineParser.setColumn(line);
       return;
@@ -36,7 +24,7 @@ function seed() {
           S: tconst,
         },
         sk: {
-          S: "#MOVIE#",
+          S: "MOVIE#",
         },
         originalTitle: {
           S: originalTitle,
