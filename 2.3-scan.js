@@ -14,3 +14,21 @@ async function getItem() {
 }
 
 getItem();
+
+////////////////////////////////////////////////////////////////////////////////
+// const params = {
+//   TableName: "Movies",
+//   FilterExpression: "averageRating > :averageRating",
+//   ExpressionAttributeValues: {
+//     ":averageRating": { N: "9" },
+//   },
+// };
+////////////////////////////////////////////////////////////////////////////////
+// const params = {
+//   TableName: "Movies",
+//   FilterExpression: "contains(genres, :genres)",
+//   ExpressionAttributeValues: {
+//     ":genres": { S: "Drama" },
+//   },
+// };
+////////////////////////////////////////////////////////////////////////////////

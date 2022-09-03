@@ -1,26 +1,12 @@
-// System libs
-import fs from "fs";
-import path from "path";
-import readline from "readline";
-
-// Helpers
-import { ddb, currDir, log, LineParser } from "./helpers/index.js";
+import { ddb, log, LineParser, LineReader } from "./helpers/index.js";
 
 const lineParser = new LineParser();
 
 function seed() {
-  const filePath = path.join(
-    currDir(import.meta.url) + "/data/director.basics.tsv"
-  );
-
   let counter = 0;
   let seedCounter = 0;
 
-  var lineReader = readline.createInterface({
-    input: fs.createReadStream(filePath),
-  });
-
-  lineReader.on("line", async (line) => {
+  LineReader("director.basics", async (line) => {
     if (counter++ === 0) {
       lineParser.setColumn(line);
       return;
@@ -37,9 +23,36 @@ function seed() {
 
     const params = {
       TableName: "Movies",
-      Item: {},
+      Item: {
+        tconst: {
+          S: tconst,
+        },
+        sk: {
+          S: `DIRECTOR#${nconst}`,
+        },
+        primaryName: {
+          S: primaryName,
+        },
+        birthYear: {
+          N: birthYear,
+        },
+        deathYear: {
+          N: deathYear,
+        },
+        primaryProfession: {
+          SS: primaryProfession.split(","),
+        },
+      },
       ReturnConsumedCapacity: "TOTAL",
     };
+
+    if (birthYear === "\\N") {
+      delete params.Item.birthYear;
+    }
+
+    if (deathYear === "\\N") {
+      delete params.Item.deathYear;
+    }
 
     try {
       log(counter, seedCounter);
