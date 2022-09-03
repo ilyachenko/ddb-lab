@@ -25,7 +25,7 @@ getItem();
 ////////////////////////////////////////////////////////////////////////////////
 // 1. Error handling - Conditions can be of length 1 or 2 only
 // ... AND begins_with(originalTitle, :originalTitle)
-// ":originalTitle": { S: "The God" },
+// ":originalTitle": { S: "The" },
 ////////////////////////////////////////////////////////////////////////////////
 // 2. Filter expression
 // FilterExpression: "begins_with(originalTitle, :originalTitle)",
