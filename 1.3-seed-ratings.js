@@ -1,26 +1,12 @@
-// System libs
-import fs from "fs";
-import path from "path";
-import readline from "readline";
-
-// Helpers
-import { ddb, currDir, log, LineParser } from "./helpers/index.js";
+import { ddb, log, LineParser, LineReader } from "./helpers/index.js";
 
 const lineParser = new LineParser();
 
 function seedRatings() {
-  const filePath = path.join(
-    currDir(import.meta.url) + "/data/title.ratings.tsv"
-  );
-
   let counter = 0;
   let seedCounter = 0;
 
-  var lineReader = readline.createInterface({
-    input: fs.createReadStream(filePath),
-  });
-
-  lineReader.on("line", async (line) => {
+  LineReader("title.ratings", async (line) => {
     if (counter++ === 0) {
       lineParser.setColumn(line);
       return;
@@ -28,7 +14,27 @@ function seedRatings() {
 
     const { tconst, averageRating, numVotes } = lineParser.parse(line);
 
-    const params = {};
+    const params = {
+      TableName: "Movies",
+      Key: {
+        tconst: {
+          S: tconst,
+        },
+        sk: {
+          S: "MOVIE",
+        },
+      },
+      UpdateExpression:
+        "set averageRating = :averageRating, numVotes = :numVotes",
+      ExpressionAttributeValues: {
+        ":averageRating": {
+          N: averageRating,
+        },
+        ":numVotes": {
+          N: numVotes,
+        },
+      },
+    };
 
     try {
       log(counter, seedCounter);

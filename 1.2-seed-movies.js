@@ -15,8 +15,6 @@ function seed() {
     const { tconst, originalTitle, runtimeMinutes, genres, startYear } =
       lineParser.parse(line);
 
-    console.log(tconst, originalTitle, runtimeMinutes, genres, startYear);
-
     const params = {
       TableName: "Movies",
       Item: {
@@ -24,7 +22,7 @@ function seed() {
           S: tconst,
         },
         sk: {
-          S: "MOVIE#",
+          S: "MOVIE",
         },
         originalTitle: {
           S: originalTitle,
