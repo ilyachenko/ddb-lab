@@ -48,18 +48,9 @@ ddb.updateTable(params, (err, data) => {
 });
 
 ////////////////////////////////////////////////////////////////////////////////
-// 1. Delete index
-// GlobalSecondaryIndexUpdates: [
-//   {
-//     Delete: {
-//       IndexName: "MovieRatingIndex",
-//     },
-//   },
-// ],
+// 1. Re-create index KEYS_ONLY projection
 ////////////////////////////////////////////////////////////////////////////////
-// 2. Re-create index KEYS_ONLY projection
-////////////////////////////////////////////////////////////////////////////////
-// 3. Re-create index INCLUDE projection
+// 2. Re-create index INCLUDE projection
 // Projection: {
 //   NonKeyAttributes: ["startYear"],
 //   ProjectionType: "INCLUDE",
